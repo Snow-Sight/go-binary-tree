@@ -24,6 +24,9 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "go.mod" }}
       - run:
+              name: Install golint
+              command: go get -u golang.org/x/lint/golint
+      - run:
           name: Lint
           command: golint
   test:
