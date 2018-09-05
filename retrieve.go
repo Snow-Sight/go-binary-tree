@@ -1,5 +1,7 @@
 package bt
 
+// Retrieve returns a bool as to whether the key exists, and the corresponding value of the key.
+// The value will be nil if the key is not present.
 func (n *Node) Retrieve(key int) (bool, interface{}) {
 	// This is our base case. If n == nil, `key`
 	// doesn't exist in our binary search tree.
