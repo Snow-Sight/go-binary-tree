@@ -16,6 +16,7 @@ func TestSearch(t *testing.T) {
 		{
 			node: &Node{
 				Key:   5,
+				Value: nil,
 				Left:  nil,
 				Right: nil,
 			},
@@ -26,6 +27,7 @@ func TestSearch(t *testing.T) {
 		{
 			node: &Node{
 				Key:   5,
+				Value: nil,
 				Left:  nil,
 				Right: nil,
 			},
@@ -36,7 +38,8 @@ func TestSearch(t *testing.T) {
 		{
 			node: &Node{
 				Key:   5,
-				Left:  &Node{3, nil, nil},
+				Value: nil,
+				Left:  &Node{3, nil, nil, nil},
 				Right: nil,
 			},
 			find:     3,
@@ -46,7 +49,8 @@ func TestSearch(t *testing.T) {
 		{
 			node: &Node{
 				Key:   5,
-				Left:  &Node{3, nil, nil},
+				Value: nil,
+				Left:  &Node{3, nil, nil, nil},
 				Right: nil,
 			},
 			find:     2,
@@ -66,7 +70,7 @@ func TestSearch(t *testing.T) {
 func BenchmarkSearch(b *testing.B) {
 	b.Run("1 Node", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			tree := New(5)
+			tree := New(5, nil)
 
 			tree.Search(5)
 		}
@@ -75,16 +79,16 @@ func BenchmarkSearch(b *testing.B) {
 	b.Run("10 Nodes", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			// generate root
-			tree := New(rand.Intn(10))
+			tree := New(rand.Intn(10), nil)
 
 			// Add 8 random nodes to the tree
 			for i := 0; i <= 8; i++ {
-				tree.Insert(rand.Intn(10))
+				tree.Insert(rand.Intn(10), nil)
 			}
 
 			val := rand.Intn(10)
 
-			tree.Insert(val)
+			tree.Insert(val, nil)
 
 			tree.Search(val)
 		}
@@ -93,16 +97,16 @@ func BenchmarkSearch(b *testing.B) {
 	b.Run("50 Nodes", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			// generate root
-			tree := New(rand.Intn(50))
+			tree := New(rand.Intn(50), nil)
 
 			// Add 48 random nodes to the tree
 			for i := 0; i <= 48; i++ {
-				tree.Insert(rand.Intn(50))
+				tree.Insert(rand.Intn(50), nil)
 			}
 
 			val := rand.Intn(50)
 
-			tree.Insert(val)
+			tree.Insert(val, nil)
 
 			tree.Search(val)
 		}
@@ -111,16 +115,16 @@ func BenchmarkSearch(b *testing.B) {
 	b.Run("500 Nodes", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			// generate root
-			tree := New(rand.Intn(500))
+			tree := New(rand.Intn(500), nil)
 
 			// Add 498 random nodes to the tree
 			for i := 0; i <= 498; i++ {
-				tree.Insert(rand.Intn(500))
+				tree.Insert(rand.Intn(500), nil)
 			}
 
 			val := rand.Intn(500)
 
-			tree.Insert(val)
+			tree.Insert(val, nil)
 
 			tree.Search(val)
 		}

@@ -13,6 +13,7 @@ func TestMin(t *testing.T) {
 		{
 			n: &Node{
 				Key:   5,
+				Value: nil,
 				Left:  nil,
 				Right: nil,
 			},
@@ -21,7 +22,8 @@ func TestMin(t *testing.T) {
 		}, {
 			n: &Node{
 				Key:   5,
-				Left:  &Node{3, nil, nil},
+				Value: nil,
+				Left:  &Node{3, nil, nil, nil},
 				Right: nil,
 			},
 			scenario: "Check left node present, right node absent",
@@ -30,8 +32,9 @@ func TestMin(t *testing.T) {
 		{
 			n: &Node{
 				Key:   5,
+				Value: nil,
 				Left:  nil,
-				Right: &Node{7, nil, nil},
+				Right: &Node{7, nil, nil, nil},
 			},
 			scenario: "Left node absent, right node present",
 			out:      5,
@@ -54,6 +57,7 @@ func TestMax(t *testing.T) {
 		{
 			n: &Node{
 				Key:   5,
+				Value: nil,
 				Left:  nil,
 				Right: nil,
 			},
@@ -62,7 +66,8 @@ func TestMax(t *testing.T) {
 		}, {
 			n: &Node{
 				Key:   5,
-				Left:  &Node{3, nil, nil},
+				Value: nil,
+				Left:  &Node{3, nil, nil, nil},
 				Right: nil,
 			},
 			scenario: "Left node present, right node absent",
@@ -71,8 +76,9 @@ func TestMax(t *testing.T) {
 		{
 			n: &Node{
 				Key:   5,
+				Value: nil,
 				Left:  nil,
-				Right: &Node{7, nil, nil},
+				Right: &Node{7, nil, nil, nil},
 			},
 			scenario: "Left node absent, right node present",
 			out:      7,

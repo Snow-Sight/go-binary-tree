@@ -15,7 +15,8 @@ func TestDelete(t *testing.T) {
 		{
 			node: &Node{
 				Key:   5,
-				Left:  &Node{1, nil, nil},
+				Value: nil,
+				Left:  &Node{1, nil, nil, nil},
 				Right: nil,
 			},
 			delete:   1,
@@ -24,8 +25,9 @@ func TestDelete(t *testing.T) {
 		{
 			node: &Node{
 				Key:   5,
+				Value: nil,
 				Left:  nil,
-				Right: &Node{7, nil, nil},
+				Right: &Node{7, nil, nil, nil},
 			},
 			delete:   7,
 			scenario: "Delete right child",
@@ -33,8 +35,9 @@ func TestDelete(t *testing.T) {
 		{
 			node: &Node{
 				Key:   5,
+				Value: nil,
 				Left:  nil,
-				Right: &Node{7, nil, &Node{9, nil, nil}},
+				Right: &Node{7, nil, nil, &Node{9, nil, nil, nil}},
 			},
 			delete:   7,
 			scenario: "Delete node with right child",
@@ -42,8 +45,9 @@ func TestDelete(t *testing.T) {
 		{
 			node: &Node{
 				Key:   5,
+				Value: nil,
 				Left:  nil,
-				Right: &Node{7, &Node{6, nil, nil}, nil},
+				Right: &Node{7, nil, &Node{6, nil, nil, nil}, nil},
 			},
 			delete:   7,
 			scenario: "Delete node with left child",
@@ -51,8 +55,9 @@ func TestDelete(t *testing.T) {
 		{
 			node: &Node{
 				Key:   5,
+				Value: nil,
 				Left:  nil,
-				Right: &Node{7, &Node{6, nil, nil}, &Node{8, nil, nil}},
+				Right: &Node{7, nil, &Node{6, nil, nil, nil}, &Node{8, nil, nil, nil}},
 			},
 			delete:   7,
 			scenario: "Delete node with left and right child",
@@ -69,9 +74,9 @@ func TestDelete(t *testing.T) {
 
 func BenchmarkDelete(b *testing.B) {
 	b.Run("1 Node", func(b *testing.B) {
-		tree := New(5)
+		tree := New(5, nil)
 
-		tree.Insert(3)
+		tree.Insert(3, nil)
 
 		for i := 0; i < b.N; i++ {
 			t := *tree
@@ -83,16 +88,16 @@ func BenchmarkDelete(b *testing.B) {
 	b.Run("10 Nodes", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			// generate root
-			tree := New(rand.Intn(10))
+			tree := New(rand.Intn(10), nil)
 
 			// Add 8 random nodes to the tree
 			for i := 0; i <= 8; i++ {
-				tree.Insert(rand.Intn(10))
+				tree.Insert(rand.Intn(10), nil)
 			}
 
 			val := rand.Intn(10)
 
-			tree.Insert(val)
+			tree.Insert(val, nil)
 
 			tree.Delete(val)
 		}
@@ -101,16 +106,16 @@ func BenchmarkDelete(b *testing.B) {
 	b.Run("50 Nodes", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			// generate root
-			tree := New(rand.Intn(50))
+			tree := New(rand.Intn(50), nil)
 
 			// Add 48 random nodes to the tree
 			for i := 0; i <= 48; i++ {
-				tree.Insert(rand.Intn(50))
+				tree.Insert(rand.Intn(50), nil)
 			}
 
 			val := rand.Intn(50)
 
-			tree.Insert(val)
+			tree.Insert(val, nil)
 
 			tree.Delete(val)
 		}
@@ -119,16 +124,16 @@ func BenchmarkDelete(b *testing.B) {
 	b.Run("500 Nodes", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			// generate root
-			tree := New(rand.Intn(500))
+			tree := New(rand.Intn(500), nil)
 
 			// Add 498 random nodes to the tree
 			for i := 0; i <= 498; i++ {
-				tree.Insert(rand.Intn(500))
+				tree.Insert(rand.Intn(500), nil)
 			}
 
 			val := rand.Intn(500)
 
-			tree.Insert(val)
+			tree.Insert(val, nil)
 
 			tree.Delete(val)
 		}

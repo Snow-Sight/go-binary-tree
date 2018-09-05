@@ -28,7 +28,7 @@ func TestNew(t *testing.T) {
 	}
 
 	for _, test := range tt {
-		if out := New(test.initialKey); out.Key != test.key {
+		if out := New(test.initialKey, nil); out.Key != test.key {
 			t.Errorf("In case \"%s\", expected %d got %d", test.scenario, test.key, out.Key)
 		}
 	}

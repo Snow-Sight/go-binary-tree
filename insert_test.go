@@ -15,6 +15,7 @@ func TestInsert(t *testing.T) {
 		{
 			node: &Node{
 				Key:   5,
+				Value: nil,
 				Left:  nil,
 				Right: nil,
 			},
@@ -24,6 +25,7 @@ func TestInsert(t *testing.T) {
 		{
 			node: &Node{
 				Key:   5,
+				Value: nil,
 				Left:  nil,
 				Right: nil,
 			},
@@ -33,7 +35,8 @@ func TestInsert(t *testing.T) {
 		{
 			node: &Node{
 				Key:   5,
-				Left:  &Node{3, nil, nil},
+				Value: nil,
+				Left:  &Node{3, nil, nil, nil},
 				Right: nil,
 			},
 			insert:   7,
@@ -42,7 +45,8 @@ func TestInsert(t *testing.T) {
 		{
 			node: &Node{
 				Key:   5,
-				Left:  &Node{3, nil, nil},
+				Value: nil,
+				Left:  &Node{3, nil, nil, nil},
 				Right: nil,
 			},
 			insert:   2,
@@ -51,7 +55,8 @@ func TestInsert(t *testing.T) {
 		{
 			node: &Node{
 				Key:   5,
-				Right: &Node{8, nil, nil},
+				Value: nil,
+				Right: &Node{8, nil, nil, nil},
 				Left:  nil,
 			},
 			insert:   9,
@@ -60,7 +65,7 @@ func TestInsert(t *testing.T) {
 	}
 
 	for _, test := range tt {
-		if test.node.Insert(test.insert); !test.node.Search(test.insert) {
+		if test.node.Insert(test.insert, nil); !test.node.Search(test.insert) {
 			t.Errorf("%s, got %v, expected %v", test.scenario, false, true)
 		}
 	}
@@ -70,57 +75,46 @@ func TestInsert(t *testing.T) {
 func BenchmarkInsert(b *testing.B) {
 	b.Run("1 Node", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			tree := New(5)
+			tree := New(5, nil)
 
-			tree.Insert(3)
+			tree.Insert(3, nil)
 		}
 	})
 
 	b.Run("10 Nodes", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			// generate root
-			tree := New(rand.Intn(10))
+			tree := New(rand.Intn(10), nil)
 
 			// Add 8 random nodes to the tree
-			for i := 0; i <= 8; i++ {
-				tree.Insert(rand.Intn(10))
+			for i := 0; i <= 9; i++ {
+				tree.Insert(rand.Intn(10), nil)
 			}
-
-			val := rand.Intn(10)
-
-			tree.Insert(val)
 		}
 	})
 
 	b.Run("50 Nodes", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			// generate root
-			tree := New(rand.Intn(50))
+			tree := New(rand.Intn(50), nil)
 
 			// Add 48 random nodes to the tree
-			for i := 0; i <= 48; i++ {
-				tree.Insert(rand.Intn(50))
+			for i := 0; i <= 49; i++ {
+				tree.Insert(rand.Intn(50), nil)
 			}
 
-			val := rand.Intn(50)
-
-			tree.Insert(val)
 		}
 	})
 
 	b.Run("500 Nodes", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			// generate root
-			tree := New(rand.Intn(500))
+			tree := New(rand.Intn(500), nil)
 
 			// Add 498 random nodes to the tree
-			for i := 0; i <= 498; i++ {
-				tree.Insert(rand.Intn(500))
+			for i := 0; i <= 499; i++ {
+				tree.Insert(rand.Intn(500), nil)
 			}
-
-			val := rand.Intn(500)
-
-			tree.Insert(val)
 		}
 	})
 }
