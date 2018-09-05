@@ -1,6 +1,7 @@
 # Golang Binary Tree
 
 [![codecov](https://codecov.io/gh/Snow-Sight/go-binary-tree/branch/master/graph/badge.svg)](https://codecov.io/gh/Snow-Sight/go-binary-tree)
+[![Go Report](https://goreportcard.com/badge/github.com/Snow-Sight/go-binary-tree)](https://goreportcard.com/report/github.com/Snow-Sight/go-binary-tree)
 
 
 This is a golang implementation of a binary tree algorithim.
