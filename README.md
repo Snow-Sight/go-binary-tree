@@ -1,6 +1,7 @@
 # Golang Binary Tree
 
 [![CircleCI](https://circleci.com/gh/Snow-Sight/go-binary-tree/tree/master.svg?style=svg)](https://circleci.com/gh/Snow-Sight/go-binary-tree/tree/master)
+[![Godoc](https://img.shields.io/badge/godoc-reference-brightgreen.svg)](https://godoc.org/github.com/Snow-Sight/go-binary-tree)
 [![codecov](https://codecov.io/gh/Snow-Sight/go-binary-tree/branch/master/graph/badge.svg)](https://codecov.io/gh/Snow-Sight/go-binary-tree)
 [![Go Report](https://goreportcard.com/badge/github.com/Snow-Sight/go-binary-tree)](https://goreportcard.com/report/github.com/Snow-Sight/go-binary-tree)
 
