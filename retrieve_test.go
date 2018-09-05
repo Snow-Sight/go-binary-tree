@@ -66,11 +66,26 @@ func TestRetrieve(t *testing.T) {
 		boolOut, valOut := test.node.Retrieve(test.retrieve)
 
 		if boolOut != test.outFound {
-			t.Errorf("In case \"%s\", expected found to be %t but recieved %t", test.scenario, test.outFound, boolOut)
+			t.Errorf("In case \"%s\", expected found to be %t but received %t", test.scenario, test.outFound, boolOut)
 		}
 
 		if valOut != test.outValue {
-			t.Errorf("In case \"%s\", expected value to be %v but recieved %v", test.scenario, test.outValue, valOut)
+			t.Errorf("In case \"%s\", expected value to be %v but received %v", test.scenario, test.outValue, valOut)
 		}
 	}
 }
+
+// func BenchRetrieve(b *testing.B) {
+//	bt := []int{10, 50, 500, 5000}
+//	for _, nodes := range bt {
+//		b.Run(fmt.Sprintf("%d Nodes", nodes), func(b *testing.B, nodes int) {
+//			tree := New(rand.Intn(nodes), nil)
+//
+//			for i := 0; i < nodes-1; i++ {
+//				tree.Insert(rand.Intn(nodes), nil)
+//			}
+//
+//			return
+//		}(nodes))
+//	}
+//}
